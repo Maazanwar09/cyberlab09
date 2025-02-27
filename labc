@@ -1,0 +1,57 @@
+5. Write a program to test password strength based on length, complexity, characters, and patterns. Use it to evaluate common passwords.
+
+import re
+
+def password_strength(password):
+
+length_criteria = len(password)>=8
+
+upper_criteria = re.search(r'[A-2]', password)
+
+lower_criteria = re.search(r'[a-z]', password)
+
+number_criteria = re.search(r'[0-9]', password)
+
+special_criteria = re.search(r'[@$%*?&]', password)
+
+#Calculate the strength score
+
+score=0
+
+if length_criteria:
+
+score += 1
+
+if upper_criteria:
+
+score += 1
+
+if lower_criteria:
+
+score += 1
+
+if number_criteria:
+
+score += 1
+
+if special_criteria:
+
+score +=1
+
+if score <= 2:
+
+return "Weak"
+
+elif score <= 4:
+
+return "Moderate"
+
+else:
+
+return "Strong"
+
+password = input("Enter a password to test its strength: ")
+
+strength = password_strength(password)
+
+print (f"Password: {password}, Strength: {strength}")

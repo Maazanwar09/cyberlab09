@@ -55,3 +55,84 @@ password = input("Enter a password to test its strength: ")
 strength = password_strength(password)
 
 print (f"Password: {password}, Strength: {strength}")
+
+Q. 
+def is_prime(n):
+
+if n <= 1:
+
+return False
+
+for i in range (2, n) :
+
+if n % i ==0 :
+
+return False
+
+return True
+
+def is_mersenne_prime(n):
+
+if is_prime(n):
+
+for i in range (1, n) :
+
+if 2 ** i - 1 == n :
+
+return True
+
+return False
+
+n = int(input("Enter a number: "))
+
+if is_mersenne_prime(n):
+
+print(f"{n} is a Mersenne prime.")
+
+else:
+
+print(f"{n} is not a Mersenne prime.")
+
+Q3.
+def gcd(a, b):
+
+if b == 0:
+
+return a
+
+return gcd(b, a% b)
+
+def euler_totient(n):
+
+count = 0
+
+for i in range(1, n):
+
+if gcd(n, i) == 1:
+
+count += 1
+
+return count
+
+n = int(input("Enter a number: "))
+
+print(f"Totient of {n} is {euler_totient(n)}.")
+
+Q4.
+Implement a function that takes two arguments (r, n) and computer order of r operation.
+
+def order(r, n):
+
+for k in range(1, n):
+
+if r**k % n == 1:
+
+return k
+
+return -1
+
+r = int(input("Enter r: "))
+
+n = int(input("Enter n: "))
+
+print(f"Order of {r} under modulo {n} operation is {order(r, n)}.")
